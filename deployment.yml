@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-from-jenkins
+  labels: 
+     env: uat
+spec:
+  selector:
+   matchLabels:
+     app: fe
+  template:
+    metadata:
+      name: myapp
+      labels: 
+         app: fe
+    spec:
+      containers:
+        - name: hello-world
+          image: abrarcv170/hell-world:$BUILD_NUMBER
+  replicas: 1
